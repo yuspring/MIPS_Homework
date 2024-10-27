@@ -1,18 +1,18 @@
 main:
-	li $s0, 5
-	li $s1, 5
-	li $s2, 0
+	li $s0, 0
+	li $s1, 10
+	li $s2, 5
 	li $s3, 10
 	li $s4, 10
-	bne $s3,$s4, Not_Equal
-	j Equal	
+	beq $s3,$s4, Equal
+	j Not_Equal	
 
 Equal:
-	add $s2, $s0, $s1
+	add $s0, $s1, $s2
 	j End
 
 Not_Equal:
-	sub $s2, $s0, $s1
+	sub $s0, $s1, $s2
 	j End
 
 End:

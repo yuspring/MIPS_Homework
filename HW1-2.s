@@ -1,13 +1,14 @@
 .data
-
 save:
 	.word 1, 2, 2, 3, 4
+
 
 .text
 main:
 	li $s3, 0
 	li $s5, 4 
 	la $s6, save
+	j Loop
 
 Loop:
 	sll $t1, $s3, 2

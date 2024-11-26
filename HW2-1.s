@@ -1,7 +1,30 @@
+.data
+	input_hint: .asciiz "Ender an integer:"
+	output_hint: .asciiz "The output is:"
+
 .text
 main:
-	addi $a0, $zero, 5
+	
+	li $v0, 4
+	la $a0, input_hint
+	syscall
+
+	li $v0, 5
+	syscall
+
+	move $a0, $v0
 	jal fact
+	j print_num
+
+print_num:
+	move $t0, $v0
+	li $v0, 4
+	la $a0, output_hint
+	syscall
+
+	move $a0, $t0
+	li $v0, 1
+	syscall
 	j End
 	
 fact:
@@ -24,10 +47,8 @@ L1:
 	addi $sp, $sp, 8
 	jr $ra
 
+
 End:
-	move $a0, $v0
-	li $v0, 1
-	syscall
 	li $v0, 10
 	syscall
 

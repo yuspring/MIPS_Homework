@@ -1,3 +1,9 @@
+#
+# MIPS HOMEWORK 1-1
+# 
+#
+
+
 main:
 	li $s0, 0
 	li $s1, 10

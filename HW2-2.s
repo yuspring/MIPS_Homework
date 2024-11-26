@@ -10,13 +10,18 @@
 
 
 .data
-    array: .word 4, 1, 3, 6 ,7, 8 ,9, 2, 5
-    length: .word 9
+    array: .word 4, 1, 3, 6 ,7, 8 
+    length: .word 6
     space: .asciiz " "
 .text
 
 main:
+    jal sort
+    j End
+
+sort:
     # s0: i, s2: array, s3: length 
+    #define array and length
 
     #make stack
     addi $sp, $sp , -20     
@@ -25,13 +30,9 @@ main:
     sw $s2, 8($sp)
     sw $s1, 4($sp)
     sw $s0, 0($sp)
-
-    #define array and length
     la $s2, array
     lw $s3, length
-    move $s0, $zero         # i = 0
-    j loop_i
-    
+    move $s0, $zero             # i = 0
 
 loop_i:
     # t0: length temp, t1: compare temp
@@ -86,7 +87,7 @@ exit_i:
     lw $s3, 12($sp)
     lw $ra, 16($sp)
     addi $sp, $sp, 20
-    j End
+    jr $ra
 
 swap:
     sll $t1, $a1, 2
@@ -131,4 +132,3 @@ end_print_loop:
 End:
     li $v0, 10
 	syscall
-
